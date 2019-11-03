@@ -53,9 +53,9 @@ public class Day1 {
 		
 		System.setProperty("webdriver.chrome.driver", driverPath);
 		driver = new ChromeDriver();
-	    driver.get(baseURL); 	    
-	    driver.manage().deleteAllCookies();
-	    driver.manage().window().maximize();
+	        driver.get(baseURL); 	    
+	        driver.manage().deleteAllCookies();
+	        driver.manage().window().maximize();
 	    
 	}
 	
@@ -90,8 +90,8 @@ public class Day1 {
 		
 		driver.manage().timeouts().implicitlyWait(6, TimeUnit.SECONDS);
 		Actions action = new Actions(driver);
-		action.moveToElement(driver.findElement(By.xpath("//li[contains(@id, 'menu-item')]//a[contains(text(), 'ISTQB® Partner Program')]"))).perform();
-		driver.findElement(By.xpath("//ul[@class = 'sub-menu']//a[contains(text(), 'ISTQB® Partner Program Guidelines')]")).click();
+		action.moveToElement(driver.findElement(By.xpath("//li[contains(@id, 'menu-item')]//a[contains(text(), 'ISTQBÂ® Partner Program')]"))).perform();
+		driver.findElement(By.xpath("//ul[@class = 'sub-menu']//a[contains(text(), 'ISTQBÂ® Partner Program Guidelines')]")).click();
 			
 		expected = "https://cstb.ca/istqb-partner-program-guidelines";
 		actual = driver.getCurrentUrl();
@@ -103,7 +103,7 @@ public class Day1 {
 	public void verifyTrainingProvidersTab() {
 
 		driver.manage().timeouts().implicitlyWait(6, TimeUnit.SECONDS);
-		driver.findElement(By.xpath("//a[contains(text(), 'ISTQB® Training Providers')]")).click();
+		driver.findElement(By.xpath("//a[contains(text(), 'ISTQBÂ® Training Providers')]")).click();
 			
 		expected = "https://cstb.ca/accredited-training";
 		actual = driver.getCurrentUrl();
@@ -128,8 +128,8 @@ public class Day1 {
 
 		driver.manage().timeouts().implicitlyWait(6, TimeUnit.SECONDS);
 		Actions action = new Actions(driver);
-	    action.moveToElement(driver.findElement(By.xpath("//li[contains(@id, 'menu-item')]//a[contains(text(), 'About Us')]"))).perform();
-	    driver.findElement(By.xpath("//ul[@class = 'sub-menu']//a[contains(text(), 'Contact Us')]")).click();
+	        action.moveToElement(driver.findElement(By.xpath("//li[contains(@id, 'menu-item')]//a[contains(text(), 'About Us')]"))).perform();
+	        driver.findElement(By.xpath("//ul[@class = 'sub-menu']//a[contains(text(), 'Contact Us')]")).click();
 			
 		expected = "https://cstb.ca/contact-us";
 		actual = driver.getCurrentUrl();
@@ -183,19 +183,24 @@ public class Day1 {
 
 		List<WebElement> bookInfoList = driver.findElements(By.xpath("//h3[contains(text(), 'Advanced Level Books')]//following-sibling::p"));
 
+		String bookInfo;
+		String bookName;
+		String price;
+		String author;
+		
 		for (int i = 0; i < bookInfoList.size(); i++) {
 
-			String bookInfo = bookInfoList.get(i).getText();
+			bookInfo = bookInfoList.get(i).getText();
 
-			String bookName = bookInfo.substring(0, bookInfo.indexOf("by"));
+			bookName = bookInfo.substring(0, bookInfo.indexOf("by"));
 
-			String price = bookInfo.substring(bookInfo.indexOf("List Price"), bookInfo.indexOf("Language"));
+			price = bookInfo.substring(bookInfo.indexOf("List Price"), bookInfo.indexOf("Language"));
 
-			String author = bookInfo.substring(bookInfo.indexOf("by"), bookInfo.indexOf("List Price"));
+			author = bookInfo.substring(bookInfo.indexOf("by"), bookInfo.indexOf("List Price"));
 
 			System.out.println("Name of the book is: " + bookName + "\n" + price + "\nAuthor is: " + author);
 	  
-	   }
+	        }
 	 
 	}
 	
@@ -229,15 +234,15 @@ public class Day1 {
 		
 		action.moveToElement(driver.findElement(By.xpath("//li[contains(@id, 'menu-item')]//a[contains(text(), 'About Us')]"))).perform();
 	    
-	    //Sometimes drop down after hover over may cause exception - element not interactable. Few seconds wait works
+	        //Sometimes drop down after hover over may cause exception - element not interactable. Few seconds wait works
 	    
-	    driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);  
+	        driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);  
 	    
-	    driver.findElement(By.xpath("//ul[@class = 'sub-menu']//a[contains(text(), 'Ask a Question')]")).click();
+	        driver.findElement(By.xpath("//ul[@class = 'sub-menu']//a[contains(text(), 'Ask a Question')]")).click();
 	    
-	    String questionText = driver.findElement(By.xpath("//div[@class = 'row']//b")).getText();
+	        String questionText = driver.findElement(By.xpath("//div[@class = 'row']//b")).getText();
 	    
-	    Assert.assertFalse(questionText.contains("error"));
+	        Assert.assertFalse(questionText.contains("error"));
 	    
 	}
 	
