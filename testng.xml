@@ -4,9 +4,9 @@
   <test thread-count="5" name="SmokeTestCSTB">     <!-- Only verifying the tabs -->
     <classes>
       <class name="test.Day1">
-      <methods>
-               <include name="verify.*" />
-       </methods>	
+        <methods>
+          <include name="verify.*" />
+        </methods>	
        </class>
     </classes>
   </test> <!-- SmokeTestCSTB -->
@@ -14,10 +14,10 @@
   <test thread-count="5" name="ScreenTestCSTB">    <!-- Checking AboutUs and Exams tab screens -->
     <classes>
       <class name="test.Day1">
-      <methods>
-               <include name="screen.*" />
-       </methods>	
-       </class>
+        <methods>
+          <include name="screen.*" />
+        </methods>	
+      </class>
     </classes>
   </test> <!-- SmokeTestCSTB -->
   
